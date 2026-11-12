@@ -1,0 +1,33 @@
+//
+// Copyright 2026 OpenHW Group contributors.
+//
+// Licensed under the Solderpad Hardware Licence, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://solderpad.org/licenses/
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+// CV32 test bench files
+${TBSRC_HOME}/uvmt/uvmt_cv32e40p_step_compare.sv
+${TBSRC_HOME}/uvmt/uvmt_cv32e40p_iss_wrap.sv
+
+// Vendor Libraries
+// The design (typedefs/monitor/ram) is shared with the Imperas flow; only the
+// RVVI adapter module differs. Selected with: make ... ISS=RUSTISS
++incdir+${DV_OVPM_DESIGN}
+${DV_OVPM_DESIGN}/typedefs.sv
+${DV_OVPM_DESIGN}/monitor.sv
+${DV_OVPM_DESIGN}/ram.sv
+
+// Rust ISS adapter. Build the model before elaborating:
+//   cargo build --release --manifest-path <imperas-riscv-tests>/rust-iss/Cargo.toml
+//   install -m 0755 <...>/target/release/libcv32dpi.so ${RUSTISS_HOME}/bin/libcv32dpi.so
++incdir+${RUSTISS_HOME}/sv
+${RUSTISS_HOME}/sv/rustiss_CV32.sv

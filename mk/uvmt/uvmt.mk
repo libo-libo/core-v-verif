@@ -129,6 +129,10 @@ export DV_OVPM_MODEL            = $(DV_OVPM_HOME)/imperas_DV_COREV
 
 export DV_OVPM_DESIGN           = $(DV_OVPM_HOME)/design
 
+# Reference-model substitute for the Imperas DPI model (see
+# vendor_lib/rustiss/README.md): `make ... ISS=RUSTISS`, ISS defaults to IMPERAS.
+export RUSTISS_HOME             = $(CORE_V_VERIF)/vendor_lib/rustiss
+
 export DV_SVLIB_PATH            = $(CORE_V_VERIF)/$(CV_CORE_LC)/vendor_lib/verilab
 
 DV_UVMT_SRCS                  = $(wildcard $(DV_UVMT_PATH)/*.sv))
